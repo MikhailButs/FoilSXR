@@ -10,6 +10,7 @@ from dataCore import dataCore
 from FT2Signal import get_signals_from_hdf5
 from signalWindowUi import signalWindowWidget
 from calibrationWondow import calibrationWindow
+from dataWindow import DataWindow
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -36,6 +37,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.calibrationWindow = calibrationWindow(data=self.data)
         self.refresh_signal.connect(self.calibrationWindow.refresh_slot)
 
+        self.dataWindow = DataWindow(data=self.data)
+
         Hlayout.addWidget(self.plot_widget)
         Hlayout.addWidget(self.settings_groupBox)
 
@@ -52,6 +55,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.select_pushButton.clicked.connect(self.select_shot)
         self.plot_pushButton.clicked.connect(self.make_plot)
         self.actionChannals_calibration.triggered.connect(self.show_calibrationWindow)
+        self.actionCompute_temperatures.triggered.connect(self.show_dataWindow)
 
     def _load_shot(self, filepath):
         self.statusbar.showMessage('Reading file...', msecs=3000)
@@ -86,7 +90,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     k = self.signals_dict[key].mult_coef()
                     signal_shift = self.signals_dict[key].zero_signal()
                     time_shift = self.signals_dict[key].zero_time()
-                    ax1.plot(np.array([self.data.signals[key].period / 1000 * i for i in range(len(self.data.signals[key].data))])
+                    ax1.plot(np.array(
+                        [self.data.signals[key].period / 1000 * i for i in range(len(self.data.signals[key].data))])
                              + time_shift, self.data.signals[key].data * k + signal_shift, label=key)
         ax1.legend()
         ax1.grid()
@@ -131,6 +136,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def show_calibrationWindow(self):
         self.calibrationWindow.show()
+
+    def show_dataWindow(self):
+        self.dataWindow.show()
 
 
 def main():
