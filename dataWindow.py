@@ -10,7 +10,7 @@ from dataCore import dataCore
 from FT2Signal import *
 
 
-class DataWindow(QtWidgets.QMainWindow, Ui_DataWidget):
+class DataWindow(QtWidgets.QWidget, Ui_DataWidget):
     refresh_signal = QtCore.pyqtSignal()
 
     def __init__(self, parent=None, data=dataCore()):
@@ -20,9 +20,9 @@ class DataWindow(QtWidgets.QMainWindow, Ui_DataWidget):
         self.monitorData = data
         self.temperaturesData = dataCore()
 
+
         self.plot_widget = FigureCanvasQTAgg(Figure(tight_layout=True))
         self.plot_widget.figure.dpi = 80.0
-
         ax1 = self.plot_widget.figure.add_subplot(1, 1, 1)
         ax1.set_title("Temperature trace")
         ax1.set_xlabel('Time, ms')
@@ -41,10 +41,12 @@ class DataWindow(QtWidgets.QMainWindow, Ui_DataWidget):
         self.plot_profile_widget.draw()
 
         self.timeTrace_verticalLayout.addWidget(self.plot_widget)
+        self.timeTrace_verticalLayout.maximumSize()
         self.profile_verticalLayout.addWidget(self.plot_profile_widget)
+        self.profile_verticalLayout.maximumSize()
 
         self.calculate_pushButton.clicked.connect(self.calculate_temperatures)
-        self.time_horizontalSlider.valueChanged.connect(self.update_profile)
+        self.time_horizontalSlider.valueChanged.connect(self.update_time)
 
     def calculate_temperatures(self):
         del self.temperaturesData
@@ -85,7 +87,7 @@ class DataWindow(QtWidgets.QMainWindow, Ui_DataWidget):
                                 np.std(self.monitorData.signals[f'SXR{2 * i + 2}'].data[noSignalTime[0]: noSignalTime[1]]))
                     self.temperaturesData.signals[f'SXR{2 * i + 1}-{2 * i + 2}'], _, _ = get_temp_from_signals(
                         self.monitorData.signals[f'SXR{2 * i + 2}'], self.monitorData.signals[f'SXR{2 * i + 1}'],
-                        filter_size=50,
+                        filter_size=self.smoothing_spinBox.value(),
                         zero_diap=noSignalTime,
                         threshold=self.threshold_doubleSpinBox.value() * sigma,
                         foil1=int(self.foil1_comboBox.currentText()),
@@ -110,6 +112,7 @@ class DataWindow(QtWidgets.QMainWindow, Ui_DataWidget):
             ax1 = self.plot_widget.figure.add_subplot(1, 1, 1)
             for signal in signal_names:
                 ax1.plot(self.temperaturesData.signals[signal].times, self.temperaturesData.signals[signal].data, label=signal)
+            ax1.axvline(x=float(self.time_label.text()))
             ax1.set_title("Temperature trace")
             ax1.set_xlabel('Time, ms')
             ax1.set_ylabel('Temperature eV')
@@ -146,5 +149,10 @@ class DataWindow(QtWidgets.QMainWindow, Ui_DataWidget):
         ax2.set_xlim((-8, 8))
         ax2.set_ylim((0, 1000))
         self.plot_profile_widget.draw()
+        gc.collect(generation=2)
+
+    def update_time(self):
+        self.update_profile()
+        self.plot_timeTraced()
 
 
