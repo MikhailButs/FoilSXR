@@ -2,9 +2,14 @@ import gc
 from PyQt6 import QtWidgets, QtCore
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg, NavigationToolbar2QT
 from matplotlib.figure import Figure
+import matplotlib
+matplotlib.use('Qt5Agg')
+matplotlib.rcParams['path.simplify'] = True
+matplotlib.rcParams['path.simplify_threshold'] = 1.0
+matplotlib.rcParams['agg.path.chunksize'] = 50000
+matplotlib.rcParams["legend.loc"] = 'upper right'
 import numpy as np
 from dataCore import dataCore
-import FT2Signal
 from dataWindowUiDesign import Ui_DataWidget
 from dataCore import dataCore
 from FT2Signal import *
@@ -22,6 +27,7 @@ class DataWindow(QtWidgets.QWidget, Ui_DataWidget):
 
 
         self.plot_widget = FigureCanvasQTAgg(Figure(tight_layout=True))
+        self.toolbar = NavigationToolbar2QT(self.plot_widget, self)
         self.plot_widget.figure.dpi = 80.0
         ax1 = self.plot_widget.figure.add_subplot(1, 1, 1)
         ax1.set_title("Temperature trace")
@@ -40,10 +46,10 @@ class DataWindow(QtWidgets.QWidget, Ui_DataWidget):
         ax2.set_ylim((0, 1000))
         self.plot_profile_widget.draw()
 
+        self.timeTrace_verticalLayout.addWidget(self.toolbar)
         self.timeTrace_verticalLayout.addWidget(self.plot_widget)
         self.timeTrace_verticalLayout.maximumSize()
         self.profile_verticalLayout.addWidget(self.plot_profile_widget)
-        self.profile_verticalLayout.maximumSize()
 
         self.calculate_pushButton.clicked.connect(self.calculate_temperatures)
         self.time_horizontalSlider.valueChanged.connect(self.update_time)

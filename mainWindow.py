@@ -4,13 +4,19 @@ import gc
 from PyQt6 import QtWidgets, QtCore
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg, NavigationToolbar2QT
 from matplotlib.figure import Figure
+import matplotlib
+matplotlib.use('Qt5Agg')
+matplotlib.rcParams['path.simplify'] = True
+matplotlib.rcParams['path.simplify_threshold'] = 1.0
+matplotlib.rcParams['agg.path.chunksize'] = 50000
+matplotlib.rcParams["legend.loc"] = 'upper right'
 import numpy as np
 from mainWindowUiDesign import Ui_MainWindow
 from dataCore import dataCore
 from FT2Signal import get_signals_from_hdf5
-from signalWindowUi import signalWindowWidget
 from calibrationWondow import calibrationWindow
 from dataWindow import DataWindow
+from signalWindowUi import signalWindowWidget
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -32,15 +38,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.plot_widget = FigureCanvasQTAgg(Figure(tight_layout=True))
         self.plot_widget.figure.dpi = 80.0
-        self.addToolBar(NavigationToolbar2QT(self.plot_widget, self))
+        #self.addToolBar(NavigationToolbar2QT(self.plot_widget, self))
+        self.toolbar = NavigationToolbar2QT(self.plot_widget, self)
 
         self.calibrationWindow = calibrationWindow(data=self.data)
         self.refresh_signal.connect(self.calibrationWindow.refresh_slot)
 
         self.dataWindow = DataWindow(data=self.data)
 
-        Hlayout.addWidget(self.plot_widget)
-        Hlayout.addWidget(self.settings_groupBox)
+        self.verticalLayout_7.addWidget(self.toolbar)
+        self.verticalLayout_7.addWidget(self.plot_widget)
+        Hlayout.addWidget(self.frame_5)
+        Hlayout.addWidget(self.frame_2)
 
         ax1 = self.plot_widget.figure.add_subplot(1, 1, 1)
         ax1.set_title("Nothing to plot")
@@ -56,6 +65,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.plot_pushButton.clicked.connect(self.make_plot)
         self.actionChannals_calibration.triggered.connect(self.show_calibrationWindow)
         self.actionCompute_temperatures.triggered.connect(self.show_dataWindow)
+        self.temperatures_pushButton.clicked.connect(self.show_dataWindow)
 
     def _load_shot(self, filepath):
         self.statusbar.showMessage('Reading file...', msecs=3000)
