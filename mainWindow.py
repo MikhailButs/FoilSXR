@@ -67,6 +67,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.actionCompute_temperatures.triggered.connect(self.show_dataWindow)
         self.temperatures_pushButton.clicked.connect(self.show_dataWindow)
 
+        self.menuCalibration.setTitle('')
+
     def _load_shot(self, filepath):
         self.statusbar.showMessage('Reading file...', msecs=3000)
         self.statusbar.show()
@@ -145,10 +147,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self._load_shot(filepath=filepath)
 
     def show_calibrationWindow(self):
-        self.calibrationWindow.show()
+        self.calibrationWindow.showMaximized()
 
     def show_dataWindow(self):
-        self.dataWindow.show()
+        self.dataWindow.showMaximized()
 
 
 def main():

@@ -1,0 +1,78 @@
+-------------------------------------------------------------------------------- 
+27.01.2024 
+11:42:38,64 
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+DirectWrite: CreateFontFaceFromHDC() failed (Означает ошибку во входном файле, например в файле шрифта.) for QFontDef(Family="MS Sans Serif", pointsize=9, pixelsize=13, styleHint=5, weight=75, stretch=100, hintingPreference=0) LOGFONT("MS Sans Serif", lfWidth=0, lfHeight=-13) dpi=96
+Traceback (most recent call last):
+  File "D:\home\projects\SXR\FoilSXR\mainWindow.py", line 141, in select_shot
+    self._load_shot(filepath=filepath)
+  File "D:\home\projects\SXR\FoilSXR\mainWindow.py", line 84, in _load_shot
+    self.refresh_ui()
+  File "D:\home\projects\SXR\FoilSXR\mainWindow.py", line 111, in refresh_ui
+    self._fill_signals_box()
+  File "D:\home\projects\SXR\FoilSXR\mainWindow.py", line 128, in _fill_signals_box
+    exec(f'win{num} = signalWindowWidget()')
+  File "<string>", line 1, in <module>
+NameError: name 'signalWindowWidget' is not defined
+-------------------------------------------------------------------------------- 
+27.01.2024 
+11:44:42,25 
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+DirectWrite: CreateFontFaceFromHDC() failed (Означает ошибку во входном файле, например в файле шрифта.) for QFontDef(Family="MS Sans Serif", pointsize=9, pixelsize=13, styleHint=5, weight=75, stretch=100, hintingPreference=0) LOGFONT("MS Sans Serif", lfWidth=0, lfHeight=-13) dpi=96
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+D:\home\projects\SXR\FoilSXR\FT2Signal.py:134: RuntimeWarning: invalid value encountered in divide
+  rel = np.nan_to_num(for_relh * coef12 / for_rell, nan=0.0, neginf=0.0, posinf=0.0)
+D:\home\projects\SXR\FoilSXR\FT2Signal.py:134: RuntimeWarning: divide by zero encountered in divide
+  rel = np.nan_to_num(for_relh * coef12 / for_rell, nan=0.0, neginf=0.0, posinf=0.0)
+-------------------------------------------------------------------------------- 
+27.01.2024 
+12:03:13,95 
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+DirectWrite: CreateFontFaceFromHDC() failed (Означает ошибку во входном файле, например в файле шрифта.) for QFontDef(Family="MS Sans Serif", pointsize=9, pixelsize=13, styleHint=5, weight=75, stretch=100, hintingPreference=0) LOGFONT("MS Sans Serif", lfWidth=0, lfHeight=-13) dpi=96
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+D:\home\projects\SXR\FoilSXR\FT2Signal.py:134: RuntimeWarning: invalid value encountered in divide
+  rel = np.nan_to_num(for_relh * coef12 / for_rell, nan=0.0, neginf=0.0, posinf=0.0)
+D:\home\projects\SXR\FoilSXR\FT2Signal.py:134: RuntimeWarning: divide by zero encountered in divide
+  rel = np.nan_to_num(for_relh * coef12 / for_rell, nan=0.0, neginf=0.0, posinf=0.0)
+-------------------------------------------------------------------------------- 
+27.01.2024 
+12:09:59,05 
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+DirectWrite: CreateFontFaceFromHDC() failed (Означает ошибку во входном файле, например в файле шрифта.) for QFontDef(Family="MS Sans Serif", pointsize=9, pixelsize=13, styleHint=5, weight=75, stretch=100, hintingPreference=0) LOGFONT("MS Sans Serif", lfWidth=0, lfHeight=-13) dpi=96
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+D:\home\projects\SXR\FoilSXR\FT2Signal.py:134: RuntimeWarning: divide by zero encountered in divide
+  rel = np.nan_to_num(for_relh * coef12 / for_rell, nan=0.0, neginf=0.0, posinf=0.0)
+D:\home\projects\SXR\FoilSXR\FT2Signal.py:134: RuntimeWarning: invalid value encountered in divide
+  rel = np.nan_to_num(for_relh * coef12 / for_rell, nan=0.0, neginf=0.0, posinf=0.0)
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+-------------------------------------------------------------------------------- 
+10.04.2024 
+20:37:07,99 
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+DirectWrite: CreateFontFaceFromHDC() failed (Означает ошибку во входном файле, например в файле шрифта.) for QFontDef(Family="MS Sans Serif", pointsize=9, pixelsize=13, styleHint=5, weight=75, stretch=100, hintingPreference=0) LOGFONT("MS Sans Serif", lfWidth=0, lfHeight=-13) dpi=96
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+D:\home\projects\SXR\FoilSXR\FT2Signal.py:134: RuntimeWarning: divide by zero encountered in divide
+  rel = np.nan_to_num(for_relh * coef12 / for_rell, nan=0.0, neginf=0.0, posinf=0.0)
+D:\home\projects\SXR\FoilSXR\FT2Signal.py:134: RuntimeWarning: invalid value encountered in divide
+  rel = np.nan_to_num(for_relh * coef12 / for_rell, nan=0.0, neginf=0.0, posinf=0.0)
+-------------------------------------------------------------------------------- 
+10.04.2024 
+20:41:37,77 
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+DirectWrite: CreateFontFaceFromHDC() failed (Означает ошибку во входном файле, например в файле шрифта.) for QFontDef(Family="MS Sans Serif", pointsize=9, pixelsize=13, styleHint=5, weight=75, stretch=100, hintingPreference=0) LOGFONT("MS Sans Serif", lfWidth=0, lfHeight=-13) dpi=96
